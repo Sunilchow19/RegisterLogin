@@ -8,15 +8,13 @@
 <body>
     
     <form action="">
-        <h2>Registration Form</h2>
+        <h2>Login Form</h2>
             <label for="user">Username:</label>
             <input type="text" placeholder="Username" value="" id="user">
             <label for="pass">Password:</label>
             <input type="password" placeholder="Password" value="" id="pass">
             <label for="email">Email:</label>
             <input type="text" placeholder="Email" value="" id="email">
-            <label for="ph-no">Phone-No:</label>
-            <input type="text" placeholder="Phone-No" value="" id="ph-no">
            <input type="button" value="Login" id="register">
     </form>
 
@@ -31,13 +29,12 @@ reg.addEventListener("click", (e)=>{
                 let username=document.getElementById("user").value
                 let pass=document.getElementById("pass").value
                 let email=document.getElementById("email").value
-                let ph_no=document.getElementById("ph-no").value
 
                 // console.log(user,pass,con_pass,email,ph_no);
 
-                // if(username==""||pass==""||email==""||ph_no==""){
-                //     alert("Please fill the details")
-                // }
+                if(username==""||pass==""||email==""||email==""){
+                    alert("Please fill the details")
+                }
 
                
                 loginData=JSON.parse(localStorage.getItem("register"))
@@ -55,12 +52,18 @@ reg.addEventListener("click", (e)=>{
                 console.log(ar);
 
                 if(ar.length>0){
-                    if(username==ar[0]["user"]&&pass==ar[0]["password"]&&email==ar[0]["Email"]&&ph_no==ar[0]["phoneNo"]){
+                    if(username==ar[0]["user"]&&pass==ar[0]["password"]&&email==ar[0]["Email"]){
                         alert("Login succesfull")
                     }
-                    else{
-                        alert("Please Fill the details")
+                    else if(pass!==ar[0]["password"] && !(pass=="")){
+                        alert("Invalid Password!")
                     }
+                    else if(email!==ar[0]["Email"] && !(email=="")){
+                        alert("Invalid Email!")
+                    }
+                    // else{
+                    //     alert("Please Fill the details")
+                    // }
                 }
 
                 else{
