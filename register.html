@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+        <h2>Registration Form</h2>
+            <label for="user">Username:</label>
+            <input type="text" placeholder="Username" value="" id="user">
+            <label for="pass">Password:</label>
+            <input type="password" placeholder="Password" value="" id="pass">
+            <label for="email">Email:</label>
+            <input type="text" placeholder="Email" value="" id="email">
+            <label for="ph-no">Phone-No:</label>
+            <input type="text" placeholder="Phone-No" value="" id="ph-no">
+           <input type="button" value="Login" id="register">
+    </form>
+
+    <script>
+
+var reg=document.getElementById("register")
+let arr=[]
+reg.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    //Getting the element
+                let username=document.getElementById("user").value
+                let pass=document.getElementById("pass").value
+                let email=document.getElementById("email").value
+                let ph_no=document.getElementById("ph-no").value
+
+                // console.log(user,pass,con_pass,email,ph_no);
+
+                // if(username==""||pass==""||email==""||ph_no==""){
+                //     alert("Please fill the details")
+                // }
+
+               
+                loginData=JSON.parse(localStorage.getItem("register"))
+                console.log(loginData)
+
+                
+
+                //checking the user data is crt or not
+            let ar=[]
+                for(i=0;i<loginData.length;i++){
+                    if(loginData[i]["user"]==username){
+                        ar.push(loginData[i])
+                    }
+                }
+                console.log(ar);
+
+                if(ar.length>0){
+                    if(username==ar[0]["user"]&&pass==ar[0]["password"]&&email==ar[0]["Email"]&&ph_no==ar[0]["phoneNo"]){
+                        alert("Login succesfull")
+                    }
+                    else{
+                        alert("Please Fill the details")
+                    }
+                }
+
+                else{
+                    // alert("Please provide Valid Username")
+                    let r=confirm("Please Register if not")
+
+                    if(r){
+                        window.location.assign("index.html")
+                    }
+                   
+                }
+          
+
+            //    localStorage.setItem("register",data)
+               
+               
+            //    let c=confirm("You will be directed to Login Page")
+               
+            //    if(c){
+            //     window.location.assign("register.html")
+            //    }
+               
+
+
+          
+                
+            })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+        <h2>Registration Form</h2>
+            <label for="user">Username:</label>
+            <input type="text" placeholder="Username" value="" id="user">
+            <label for="pass">Password:</label>
+            <input type="password" placeholder="Password" value="" id="pass">
+            <label for="conpass">Confirm-Password:</label>
+            <input type="password" placeholder="Confirm-Password" value="" id="passes">
+            <label for="email">Email:</label>
+            <input type="text" placeholder="Email" value="" id="email">
+            <label for="ph-no">Phone-No:</label>
+            <input type="text" placeholder="Phone-No" value="" id="ph-no">
+           <input type="button" value="Register" id="register">
+    </form>
+
+    <script>
+
+var reg=document.getElementById("register")
+let arr=[]
+reg.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    //Getting the element
+                let username=document.getElementById("user").value
+                let pass=document.getElementById("pass").value
+                let con_pass=document.getElementById("passes").value
+                let email=document.getElementById("email").value
+                let ph_no=document.getElementById("ph-no").value
+
+                // console.log(user,pass,con_pass,email,ph_no);
+
+                let obj={
+                    user:username,
+                    password:pass,
+                    confirmPassword:con_pass,
+                    Email:email,
+                    phoneNo:ph_no
+                }
+
+                if(obj["user"]==""||obj["password"]==""||obj["confirmPassword"]==""||obj["Email"]==""||obj["phoneNo"]==""){
+                    alert("Please fill the Required section")
+                }
+                else if(pass!==con_pass){
+                        alert("Please provide Correct Passwords")
+                }
+                else{
+                    arr.push(obj)
+                }
+
+
+                
+                
+                // console.log(arr);
+                
+                
+                //Changing array of objects to strings type to stored in local storage
+                data=JSON.stringify(arr)
+
+               localStorage.setItem("register",data)
+               
+               
+               let c=confirm("You will be directed to Login Page")
+               
+               if(c){
+                window.location.assign("register.html")
+               }
+               
+
+
+               // if(arr[obj]["user"].includes(user)){
+                //     alert("Please provide another Username")
+                //     // !(arr.push(obj))
+                // }
+                // console.log(obj);
+                // localStorage.clear()
+                
+                //     else if(data.includes(Email)){
+            //         alert("Please provide another Email-Id")
+            //     }
+
+            //    else if(data.includes(ph_no)){
+                //         alert("Please provide another Phone-No")
+                
+                //     }
+                // for(i=0;i<arr.length;i++){
+                //     if(arr[i]["user"]==username){
+                //         alert("Please provide another user")
+                //         // !(arr.push(obj))
+                        
+                //     }
+                // }
+                
+            })
+
+
+    </script>
+</body>
+</html>
